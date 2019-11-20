@@ -5,7 +5,7 @@ const int DefaultVertices=200;  //默认的拓扑的最大顶点数
 class NetTopo
 {
 public:
-    NetTopo(int sz=DefaultVertices);
+    NetTopo(int sz=DefaultVertices);//构造函数
     //void createTopo();//建立拓扑图
     bool insertVertex(int v);//插入顶点
     bool insertEdge(int v1,int v2,int cost);//插入边(v1,v2),权值为cost

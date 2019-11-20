@@ -2,6 +2,7 @@
 using namespace std;
 const int DefaultVertices=200;  //默认的拓扑的最大顶点数
 const int inf=1e7;
+//构造函数
 NetTopo::NetTopo(int int sz=DefaultVertices)
 {
     maxVertices=sz;
@@ -17,4 +18,25 @@ NetTopo::NetTopo(int int sz=DefaultVertices)
     {
         Edge[i][j]=(i==j)? 0:inf;
     }
+}
+//顶点插入函数
+bool NetTopo::insertVertex(int v)
+{
+    //判断是否还有空位置
+    if(numVertices==maxVertices)
+        return false;
+    VerticesList[numVertices]=v;
+    ++numVertices;
+}
+//带权边插入函数
+bool NetTopo::insertEdge(int v1,int v2,int cost)
+{
+    if(v1>-1&&v1<maxVertices&&v2>-1&&v2<maxVertices&&Edge[v1][v2]==inf)
+    {
+        Edge[v1][v2]=Edge[v2][v1]=cost;
+        numEdges++;
+        return true;
+    }
+    else
+        return false;
 }
